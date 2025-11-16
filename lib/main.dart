@@ -1,10 +1,7 @@
 // Master Mind Game in Flutter
 // imports
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
 import 'package:flutter/services.dart';
->>>>>>> e5e42ba (Game Finish)
 import 'dart:math';
 
 // Entry point
@@ -218,21 +215,15 @@ class _MyHomePageState extends State<MyHomePage> {
   late List<Color> _playerGuess; // Player's current guess
   List<_Attempt> _history = []; // History of Player's attempts
 
-<<<<<<< HEAD
-=======
   final ScrollController _historyController = ScrollController(); // Scroll controller for history list
 
->>>>>>> e5e42ba (Game Finish)
   // Initialize state
   @override
   void initState() {
     super.initState(); // Initialize state
-<<<<<<< HEAD
-=======
 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky); // Enable immersive mode. Hides system UI for full screen experience.
 
->>>>>>> e5e42ba (Game Finish)
     // Set available colors based on selected number
     availableColors = [
       Colors.red,
@@ -248,8 +239,6 @@ class _MyHomePageState extends State<MyHomePage> {
     _generateSecretCode(); // Generate secret code
   }
 
-<<<<<<< HEAD
-=======
   @override
   void dispose() {
     // Restore system UI on dispose
@@ -259,7 +248,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose(); // Call super dispose
   }
 
->>>>>>> e5e42ba (Game Finish)
   // Generate secret code
   void _generateSecretCode() {
     // Generate random secret code
@@ -343,8 +331,6 @@ class _MyHomePageState extends State<MyHomePage> {
             'Tentativo $_attempts: $correctPosition colori al posto giusto, $correctColor colore/i in posizione sbagliata'; // Feedback message
         _playerGuess = List.filled(widget.codeLength, Colors.grey); // Reset player's guess for next attempt
       }
-<<<<<<< HEAD
-=======
 
       WidgetsBinding.instance.addPostFrameCallback((_) { // Scroll to bottom of history after frame is rendered
         if (_historyController.hasClients) { // Check if controller has clients
@@ -355,7 +341,6 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }
       });
->>>>>>> e5e42ba (Game Finish)
     });
   }
 
@@ -388,11 +373,8 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(height: 8),
               const Text('3. Tocca i cerchi per cambiare colore.'),
               const SizedBox(height: 8),
-<<<<<<< HEAD
               Text(
-=======
               const Text(
->>>>>>> e5e42ba (Game Finish)
                 '4. Dopo ogni tentativo, ricevi un feedback:\n'
                 '   • Rosso: colore corretto nella posizione corretta.\n'
                 '   • Bianco: colore corretto, ma in posizione sbagliata.\n'
@@ -420,12 +402,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Build history of attempts
   Widget _buildHistory() {
-<<<<<<< HEAD
     return Column(
       children: _history.map((attempt) { // Map each attempt to a widget
         List<Widget> indicators = []; // Feedback indicators
         // Aggiungi indicatori di feedback
-=======
     return ListView.builder( // Build list of attempts
       controller: _historyController, // Scroll controller for history
       shrinkWrap: true, // Shrink to fit content
@@ -435,7 +415,6 @@ class _MyHomePageState extends State<MyHomePage> {
         List<Widget> indicators = []; // List of feedback indicators
 
         // Correct position indicators
->>>>>>> e5e42ba (Game Finish)
         for (int i = 0; i < attempt.correctPosition; i++) { // Correct position
           // Add red indicator for correct position
           indicators.add(Container(
@@ -459,11 +438,8 @@ class _MyHomePageState extends State<MyHomePage> {
           indicators.add(Container(
             width: 10,
             height: 10,
-<<<<<<< HEAD
             color: Colors.grey.shade300.withOpacity(0.4),
-=======
             color: Colors.grey.shade300,
->>>>>>> e5e42ba (Game Finish)
             margin: const EdgeInsets.symmetric(horizontal: 2),
           ));
         }
@@ -476,7 +452,6 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               // Display guessed colors
               ...attempt.guess.map((c) => Container( // Circle for each guessed color
-<<<<<<< HEAD
                     margin: const EdgeInsets.all(4), // Spacing around circle
                     width: 25,
                     height: 25,
@@ -486,7 +461,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       border: Border.all(color: Colors.black26),
                     ),
                   )),
-=======
                 margin: const EdgeInsets.all(4), // Spacing around circle
                 width: 25,
                 height: 25,
@@ -496,18 +470,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   border: Border.all(color: Colors.black26),
                 ),
               )),
->>>>>>> e5e42ba (Game Finish)
               // Spacing between guess and indicators
               const SizedBox(width: 10),
               ...indicators, // Display feedback indicators
             ],
           ),
         );
-<<<<<<< HEAD
       }).toList(), // Convert map to list
-=======
       },
->>>>>>> e5e42ba (Game Finish)
     );
   }
 
@@ -525,7 +495,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-<<<<<<< HEAD
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -537,7 +506,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(height: 10),
                 if (!_gameEnded) // Show color selection only if game is not ended
                   Row(
-=======
       body: Padding( // Padding around content
         padding: const EdgeInsets.all(16.0), // Padding value. All sides 16
         child: Column( // Column layout
@@ -558,7 +526,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   final circleSize = maxCircleSize.clamp(40.0, 60.0); // Clamp circle size between 40 and 60
 
                   return Row(
->>>>>>> e5e42ba (Game Finish)
                     mainAxisAlignment: MainAxisAlignment.center, // Center circles horizontally
                     children: List.generate(widget.codeLength, (index) { // Generate circles for player's guess
                       // Circle for each color in player's guess
@@ -566,13 +533,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () => _changeColor(index), // Change color on tap
                         child: Container(
                           margin: const EdgeInsets.all(8), // Spacing around circle
-<<<<<<< HEAD
                           width: 60,
                           height: 60,
-=======
                           width: circleSize,
                           height: circleSize,
->>>>>>> e5e42ba (Game Finish)
                           decoration: BoxDecoration( // Decoration for circle
                             color: _playerGuess[index], // Circle color
                             shape: BoxShape.circle, // Circle shape
@@ -581,7 +545,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       );
                     }),
-<<<<<<< HEAD
                   ),
                 const SizedBox(height: 30),
                 ElevatedButton.icon( // Button to check guess or restart game
@@ -618,7 +581,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-=======
                   );
                 },
               ),
@@ -655,7 +617,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
           ],
->>>>>>> e5e42ba (Game Finish)
         ),
       ),
     );
